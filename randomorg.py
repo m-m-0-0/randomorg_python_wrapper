@@ -35,7 +35,7 @@ def buildRequest(basereq, *args, method=""):
 
 
 def apiRequest(reqargs):
-    request = requests.post(API_URL, json = reqargs)
+    request = requests.post(API_URL, json=reqargs)
     response = json.loads(request.text)
     statuscode = request.status_code
 
@@ -63,9 +63,7 @@ class Randomorg:
         self.basereq["params"]["apiKey"] = apiKey
         req = requests.post(API_URL, json = buildRequest(self.basereq, method="getUsage"))
         
-        if req.status_code == 200:
-            pass
-        else:
+        if req.status_code != 200:
             raise NetworkException(req.status_code)
         
         response = json.loads(req.text)
@@ -107,30 +105,30 @@ class Randomorg:
 
 
     def generateIntegers(self, n, min, max, replacement="true", base="10"):
-        response = apiRequest(buildRequest(self.basereq, locals(), method = "generateIntegers"))
+        response = apiRequest(buildRequest(self.basereq, locals(), method="generateIntegers"))
         return response["result"]["random"]["data"]
 
 
     def generateDecimalFractions(self, n, decimalPlaces, replacement="true"):
-        response = apiRequest(buildRequest(self.basereq, locals(), method = "generateDecimalFractions"))
+        response = apiRequest(buildRequest(self.basereq, locals(), method="generateDecimalFractions"))
         return response["result"]["random"]["data"]
 
 
     def generateGaussians(self, n, mean, standardDeviation, significantDigits):
-        response = apiRequest(buildRequest(self.basereq, locals(), method = "generateGaussians"))
+        response = apiRequest(buildRequest(self.basereq, locals(), method="generateGaussians"))
         return response["result"]["random"]["data"]
 
 
     def generateStrings(self, n, length, characters, replacement="true"):
-        response = apiRequest(buildRequest(self.basereq, locals(), method = "generateStrings"))
+        response = apiRequest(buildRequest(self.basereq, locals(), method="generateStrings"))
         return response["result"]["random"]["data"]
 
 
     def generateUUIDs(self, n):
-        response = apiRequest(buildRequest(self.basereq, locals(), method = "generateUUIDs"))
+        response = apiRequest(buildRequest(self.basereq, locals(), method="generateUUIDs"))
         return response["result"]["random"]["data"]
 
 
     def generateBlobs(self, n, size, format="base64"):
-        response = apiRequest(buildRequest(self.basereq, locals(), method = "generateBlobs"))
+        response = apiRequest(buildRequest(self.basereq, locals(), method="generateBlobs"))
         return response["result"]["random"]["data"]
