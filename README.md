@@ -1,10 +1,10 @@
 # randomorg_python_wrapper
 A simple Python wrapper around api.random.org
 
-##Requirements
+## Requirements
 * Requests
 
-##Usage
+## Usage
 
 >\>\>\>import Randomorg
 
