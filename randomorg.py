@@ -12,11 +12,11 @@ class KeyException(Exception):
 
 
 class ApiException(Exception):
-	pass
+    pass
 
 
 class NetworkException(exception)
-	pass
+    pass
 
 def buildRequest(basereq, *args, method=""):
     reqargs = copy.deepcopy(basereq)
